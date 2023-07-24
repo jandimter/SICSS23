@@ -6,7 +6,7 @@ Link al repositorio del proyecto.
 
 ## Problemática:
 
-Hoy en día, el cambio climático es uno de los mayores problemas que enfrenta la humanidad, siendo la principal causa del calentamiento global las actividades humanas. Esto ha provocado un aumento de emisiones de gases de efecto invernadero que a su vez han aumentado la temperatura de la superficial global en 1,1 °C entre 2011-2020 (Intergovernmental Panel Climate Change [IPCC], 2023).
+Hoy en día, el cambio climático es uno de los mayores problemas que enfrenta la humanidad, siendo la principal causa del calentamiento global las actividades humanas. De hecho, existe evidencia de que las emisiones de gases de efecto invernadero han aumentado la temperatura de la superficial global en 1,1 °C entre 2011-2020 (Intergovernmental Panel Climate Change [IPCC], 2023).
 
 Proliferación de las tecnologías de la investigación. Comunicación a través de las redes o medios de comunicación digitales, podrían estar influyendo la conducta proambiental. Métodos computacionales de investigación. Análisis de texto de noticias.
 
