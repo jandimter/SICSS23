@@ -1,5 +1,6 @@
 # Proyecto SICSS23
 **Equipo:** Patricia Chandía, Felipe Labra, Jan Dimter, Paula Reveco.
+
 Link al repositorio del proyecto.
 
 ## Problemática: 
