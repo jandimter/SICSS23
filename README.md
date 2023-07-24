@@ -8,7 +8,9 @@ Link al repositorio del proyecto.
 
 Hoy en día, el cambio climático es uno de los mayores problemas que enfrenta la humanidad, siendo la principal causa del calentamiento global las actividades humanas. En efecto, existe evidencia de que las emisiones de gases de efecto invernadero han aumentado la temperatura de la superficial global en 1,1 °C entre 2011-2020 (Intergovernmental Panel Climate Change [IPCC], 2023).
 
-Proliferación de las tecnologías de la investigación. Comunicación a través de las redes o medios de comunicación digitales, podrían estar influyendo la conducta proambiental. Métodos computacionales de investigación. Análisis de texto de noticias.
+Otro fenómeno de relevancia, acontencidos en los últimos años, tiene que ver con la proliferación de las tecnologías de la información y de la comunicación.
+
+a través de las redes o medios de comunicación digitales, podrían estar influyendo la conducta proambiental. Métodos computacionales de investigación. Análisis de texto de noticias.
 
 ## Pregunta de investigación
 
