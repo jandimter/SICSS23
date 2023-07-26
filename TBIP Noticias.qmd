@@ -1,0 +1,99 @@
+---
+title: "TBIP Noticias"
+format: html
+editor: visual
+---
+
+```{r Librerías}
+library(readr)
+library(tidyverse)
+library(sjmisc)
+library(tm)
+library(textir)
+library(wordfish)
+
+
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(stm)
+```
+
+```{r}
+news <- read_csv("data")
+news <- news %>%
+  #filter(dataType=='news') %>%
+  select(title,body,date,source_title,month,year) %>%
+  mutate(body = tolower(body),
+         title = tolower(title)
+         )
+
+saveRDS(news,"news.Rds")
+```
+
+```{r}
+news$key_ubicacion <- str_detect(news$body,'quintero|puchuncavi|puchuncaví|tocopilla|mejillones')
+news$key_contaminacion <- str_detect(news$body,'contaminación|contaminacion|contaminantes|termoeléctrica|termoelectrica|minería|mineria|minería')
+news$key_zonasacrificio <- str_detect(news$body,'zona de sacrificio|sacrificio ambient|conflicto ambiental|conflicto medioambient|sacrificio medioambient')
+news$key_intoxic <- str_detect(news$body,'intoxic')
+
+
+news$points <-             news$key_contaminacion +
+                           news$key_zonasacrificio+
+                           news$key_intoxic
+
+news$key_colo <- str_detect(news$body,'colo colo|colocolo|blanco&negro|blanco y negro| blancoynegro')
+
+quintero<- news %>% filter(key_ubicacion & !news$key_colo & points>1)
+saveRDS(quintero,"quintero.Rds")
+
+
+```
+
+```{r}
+# Crear un corpus a partir de los discursos
+corpus <- Corpus(VectorSource(quintero$body))
+
+# Preprocesamiento de los textos (puedes ajustar el preprocesamiento según tus necesidades)
+#corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removeNumbers)
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords("spanish"))
+
+# Construir una matriz de términos de documentos
+term_matrix <- DocumentTermMatrix(corpus)
+
+# Calcular puntos ideales utilizando el método WORDSCORE
+puntos_ideales <- ideal(term_matrix, method = "WORDSCORE")
+
+# Agregar la información de "id" y "autor" a los puntos ideales
+puntos_ideales$congress_id <- datos$id
+puntos_ideales$author <- datos$autor
+
+# Visualizar los puntos ideales
+print(puntos_ideales)
+
+write_tsv(quintero,"quintero.tsv")
+
+```
+
+```{python}
+! git clone https://github.com/keyonvafa/tbip
+
+```
+
+```{python}
+# !conda install -c conda-forge tensorflow=2.12
+
+import time
+import os
+import pandas as pd
+import numpy as np
+import scipy.sparse as sparse
+import tensorflow as tf
+import tensorflow_probability as tfp
+from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+import matplotlib.pyplot as plt
+import tbip.tbip_with_gamma as tbip
+```
